@@ -1,10 +1,50 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { databaseConfig, appConfig, config } from './config';
+import { TypeOrmConfigService } from './database/typeorm-config.service';
+import { AcceptLanguageResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
+import * as path from 'path';
+import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [databaseConfig, appConfig, config],
+      envFilePath: ['.env'],
+    }),
+    TypeOrmModule.forRootAsync({
+      useClass: TypeOrmConfigService,
+    }),
+    //Localization
+    I18nModule.forRoot({
+      fallbackLanguage: 'en',
+      fallbacks: {
+        en: 'en',
+        ar: 'ar',
+      },
+      loaderOptions: {
+        path: path.join(__dirname, '/i18n/'),
+        includeSubfolders: true,
+        watch: true,
+      },
+      resolvers: [
+        { use: QueryResolver, options: ['lang'] },
+        AcceptLanguageResolver,
+      ],
+    }),
+    ScheduleModule.forRoot(),
+  ],
+  controllers: [],
+  providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private readonly configService: ConfigService) {}
+  configure(consumer: MiddlewareConsumer): void {
+    if (this.configService.get('app.nodeEnv') == 'development') {
+      consumer.apply(LoggerMiddleware).forRoutes('*');
+    }
+  }
+}
