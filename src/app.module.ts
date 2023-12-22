@@ -7,6 +7,8 @@ import { AcceptLanguageResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
 import * as path from 'path';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { ScheduleModule } from '@nestjs/schedule';
+import { RedisModule } from './modules/redis/redis.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -36,6 +38,8 @@ import { ScheduleModule } from '@nestjs/schedule';
       ],
     }),
     ScheduleModule.forRoot(),
+    RedisModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
