@@ -1,1 +1,9 @@
-{}
+{
+  "userNotFound": "User not found",
+  "emailTaken": "Email already exist",
+  "loginSuccessfully": "Login successfully!",
+  "invalidUsernameOrPassword": "Invalid username or password",
+  "passwordMismatch": "Password and confirm password do not match",
+  "requestSuccessful": "Request successful",
+  "requestFailed": "Failed to reset your password"
+}
