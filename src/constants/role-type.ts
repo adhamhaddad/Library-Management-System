@@ -1,4 +1,4 @@
 export enum RoleType {
-  ADMIN = 'Admin',
-  BORROWER = 'Borrower',
+  ADMIN = 'admin',
+  BORROWER = 'borrower',
 }
