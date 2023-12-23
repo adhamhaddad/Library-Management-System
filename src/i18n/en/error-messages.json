@@ -5,5 +5,22 @@
   "invalidUsernameOrPassword": "Invalid username or password",
   "passwordMismatch": "Password and confirm password do not match",
   "requestSuccessful": "Request successful",
-  "requestFailed": "Failed to reset your password"
+  "requestFailed": "Failed to reset your password",
+  "borrowerUpdatedSuccessfully": "Borrower updated successfully",
+  "borrowerDeletedSuccessfully": "Borrower deleted successfully",
+  "failedToUpdateBorrower": "Failed to update borrower",
+  "failedToDeleteBorrower": "Failed to delete borrower",
+  "bookNotFound": "Book not found",
+  "bookCreatedSuccessfully": "Book created successfully",
+  "bookUpdatedSuccessfully": "Book updated successfully",
+  "bookDeletedSuccessfully": "Book deleted successfully",
+  "failedToCreateBook": "Failed to create book",
+  "failedToUpdateBook": "Failed to update book",
+  "failedToDeleteBook": "Failed to delete book",
+  "noEnoughQuantity": "No enough quantity",
+  "bookCheckedSuccessfully": "Book checked out successfully",
+  "bookReturnSuccessfully": "Book return successfully",
+  "failedToReturnBook": "Failed to return book",
+  "bookAlreadyReturn": "Book already return",
+  "bookAlreadyChecked": "Book already checked"
 }
