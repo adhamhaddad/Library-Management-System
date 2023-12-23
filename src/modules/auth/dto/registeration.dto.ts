@@ -1,6 +1,5 @@
 import {
   IsString,
-  IsEnum,
   IsNotEmpty,
   MaxLength,
   MinLength,
@@ -10,7 +9,6 @@ import {
 } from 'class-validator';
 import { Match } from 'src/decorators/match.decorator';
 import { Expose } from 'class-transformer';
-import { RoleType } from 'src/constants/role-type';
 
 export class RegistrationDto {
   @IsString()

@@ -10,7 +10,7 @@ import { JwtAuthGuard } from 'src/modules/auth/guards/auth.guard';
 export class BorrowerController {
   constructor(private readonly borrowerService: BorrowerService) {}
 
-  @Patch(':id')
+  @Patch()
   async updateBorrower(
     @Body() body: UpdateBorrowerDto,
     @User() user: any,

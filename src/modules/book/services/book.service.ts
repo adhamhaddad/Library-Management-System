@@ -155,11 +155,9 @@ export class BookService {
         HttpStatus.BAD_REQUEST,
       );
 
-    const updatedBook = await this.bookRepository.find({ where: { uuid } });
-
     return {
       message: errorMessage.bookDeletedSuccessfully,
-      data: this.serializeBook(updatedBook),
+      data: this.serializeBook(book),
     };
   }
 

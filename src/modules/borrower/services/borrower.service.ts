@@ -99,7 +99,7 @@ export class BorrowerService {
     });
     if (!borrower)
       throw new HttpException(errorMessage.userNotFound, HttpStatus.NOT_FOUND);
-
+    console.log(body)
     const { affected } = await this.borrowerRepository.update(
       { uuid: borrower.uuid },
       body,
@@ -110,13 +110,13 @@ export class BorrowerService {
         HttpStatus.BAD_REQUEST,
       );
 
-    const updatedBorrower = await this.borrowerRepository.find({
+    const updatedBorrower = await this.borrowerRepository.findOne({
       where: { id: user.id },
     });
 
     return {
       message: errorMessage.borrowerUpdatedSuccessfully,
-      data: updatedBorrower,
+      data: this.serializeUser(updatedBorrower),
     };
   }
 
