@@ -45,7 +45,8 @@ export class BorrowingService {
     const book = await this.bookRepository.findOne({
       where: { uuid: bookUuid },
     });
-    if (!book) throw new HttpException('Book not found', HttpStatus.NOT_FOUND);
+    if (!book)
+      throw new HttpException(errorMessage.bookNotFound, HttpStatus.NOT_FOUND);
 
     if (book.available_quantity === 0)
       throw new HttpException('No enough quantity', HttpStatus.BAD_REQUEST);
@@ -122,13 +123,6 @@ export class BorrowingService {
   }
 
   async getMyCheckedOutsBooks(user: User, lang: string) {
-    const errorMessage: ErrorMessages = this.i18nService.translate(
-      'error-messages',
-      {
-        lang,
-      },
-    );
-
     const borrowings = await this.borrowingRepository.find({
       where: { return_date: null },
       relations: ['user', 'book'],

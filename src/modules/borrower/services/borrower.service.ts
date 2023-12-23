@@ -25,13 +25,6 @@ export class BorrowerService {
   ) {}
 
   async getBorrowers(query: FilterBorrowerDTO, lang: string) {
-    const errorMessage: ErrorMessages = this.i18nService.translate(
-      'error-messages',
-      {
-        lang,
-      },
-    );
-
     const selector: Partial<IUser> = {
       role: RoleType.BORROWER,
     };
@@ -113,7 +106,7 @@ export class BorrowerService {
     );
     if (!affected)
       throw new HttpException(
-        'Failed to update borrower',
+        errorMessage.failedToUpdateBorrower,
         HttpStatus.BAD_REQUEST,
       );
 
@@ -121,7 +114,10 @@ export class BorrowerService {
       where: { id: user.id },
     });
 
-    return { message: 'Borrower updated successfully', data: updatedBorrower };
+    return {
+      message: errorMessage.borrowerUpdatedSuccessfully,
+      data: updatedBorrower,
+    };
   }
 
   async deleteBorrower(uuid: string, lang: string) {
@@ -141,12 +137,12 @@ export class BorrowerService {
     const { affected } = await this.borrowerRepository.delete({ uuid });
     if (!affected)
       throw new HttpException(
-        'Failed to delete borrower',
+        errorMessage.failedToDeleteBorrower,
         HttpStatus.BAD_REQUEST,
       );
 
     return {
-      message: 'Borrower deleted successfully',
+      message: errorMessage.borrowerDeletedSuccessfully,
       data: this.serializeUser(borrower),
     };
   }

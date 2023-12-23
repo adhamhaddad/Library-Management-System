@@ -38,22 +38,18 @@ export class BookService {
     });
     const book = await this.bookRepository.save(bookCreated);
     if (!book)
-      throw new HttpException('Failed to create Book', HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        errorMessage.failedToCreateBook,
+        HttpStatus.BAD_REQUEST,
+      );
 
     return {
-      message: 'Book created successfully',
+      message: errorMessage.bookCreatedSuccessfully,
       data: this.serializeBook(book),
     };
   }
 
   async getBooks(query: FilterBookDTO, lang: string) {
-    const errorMessage: ErrorMessages = this.i18nService.translate(
-      'error-messages',
-      {
-        lang,
-      },
-    );
-
     const selector: Partial<IBook> = {};
     const keyword = query.filter?.keyword;
     let order: OrderByCondition = {
@@ -122,16 +118,20 @@ export class BookService {
     );
 
     const book = await this.bookRepository.findOne({ where: { uuid } });
-    if (!book) throw new HttpException('Book not found', HttpStatus.NOT_FOUND);
+    if (!book)
+      throw new HttpException(errorMessage.bookNotFound, HttpStatus.NOT_FOUND);
 
     const { affected } = await this.bookRepository.update({ uuid }, body);
     if (!affected)
-      throw new HttpException('Failed to update book', HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        errorMessage.failedToUpdateBook,
+        HttpStatus.BAD_REQUEST,
+      );
 
     const updatedBook = await this.bookRepository.find({ where: { uuid } });
 
     return {
-      message: 'Book updated successfully',
+      message: errorMessage.bookUpdatedSuccessfully,
       data: this.serializeBook(updatedBook),
     };
   }
@@ -145,16 +145,20 @@ export class BookService {
     );
 
     const book = await this.bookRepository.findOne({ where: { uuid } });
-    if (!book) throw new HttpException('Book not found', HttpStatus.NOT_FOUND);
+    if (!book)
+      throw new HttpException(errorMessage.bookNotFound, HttpStatus.NOT_FOUND);
 
     const { affected } = await this.bookRepository.delete({ uuid });
     if (!affected)
-      throw new HttpException('Failed to delete book', HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        errorMessage.failedToDeleteBook,
+        HttpStatus.BAD_REQUEST,
+      );
 
     const updatedBook = await this.bookRepository.find({ where: { uuid } });
 
     return {
-      message: 'Book deleted successfully',
+      message: errorMessage.bookDeletedSuccessfully,
       data: this.serializeBook(updatedBook),
     };
   }
