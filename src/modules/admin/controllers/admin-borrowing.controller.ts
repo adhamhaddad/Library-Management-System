@@ -11,10 +11,17 @@ export class AdminBorrowingsController {
   constructor(private readonly borrowingService: BorrowingService) {}
 
   @Get()
-  async getBorrowings(@Query() query: FilterBookDTO, @Lang() lang: string) {
+  async getBorrowings(@Query() query: FilterBookDTO) {
+    const { data, total, meta } =
+      await this.borrowingService.getBorrowings(query);
+    return { data, total, meta };
+  }
+
+  @Get('/over-due')
+  async getBorrowingsOverDue(@Query() query: FilterBookDTO) {
     const { data, total, meta } = await this.borrowingService.getBorrowings(
       query,
-      lang,
+      true,
     );
     return { data, total, meta };
   }

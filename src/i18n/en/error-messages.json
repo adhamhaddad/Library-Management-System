@@ -22,5 +22,6 @@
   "bookReturnSuccessfully": "Book return successfully",
   "failedToReturnBook": "Failed to return book",
   "bookAlreadyReturn": "Book already return",
-  "bookAlreadyChecked": "Book already checked"
+  "bookAlreadyChecked": "Book already checked",
+  "invalidDueDate": "The due date cannot be in the past or in the same day"
 }

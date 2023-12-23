@@ -22,5 +22,6 @@
   "bookReturnSuccessfully": "تمت إعادة الكتاب بنجاح",
   "failedToReturnBook": "فشل في إعادة الكتاب",
   "bookAlreadyReturn": "الكتاب تمت إعادته بالفعل",
-  "bookAlreadyChecked": "الكتاب تمت استعارته بالفعل"
+  "bookAlreadyChecked": "الكتاب تمت استعارته بالفعل",
+  "invalidDueDate": "لا يمكن أن يكون تاريخ الاستحقاق في الماضي أو في نفس اليوم"
 }

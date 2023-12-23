@@ -10,7 +10,7 @@ export class AdminGuard implements CanActivate {
     // Assuming you set the user object during authentication
     const request = context.switchToHttp().getRequest();
     let userType;
-    if (request?.user) userType = request.user.user.role;
+    if (request?.user) userType = request.user.role;
 
     // Check if the user has the 'admin' role (assuming UserType is the property representing the role)
     return userType === RoleType.ADMIN;

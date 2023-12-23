@@ -1,9 +1,18 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { BorrowingService } from '../services/borrowing.service';
 import { CreateBorrowingDto } from '../dto/create-borrowing.dto';
 import { Lang } from 'src/decorators/lang.decorator';
 import { User } from 'src/decorators/user.decorator';
 import { JwtAuthGuard } from 'src/modules/auth/guards/auth.guard';
+import { FilterBorrowingDTO } from '../dto/filter-borrowing.dto';
 
 @UseGuards(JwtAuthGuard)
 @Controller('borrowings')
@@ -41,11 +50,13 @@ export class BorrowingController {
   }
 
   @Get()
-  async getMyCheckedOutsBooks(@User() user: any, @Lang() lang: string) {
-    const { data } = await this.borrowingService.getMyCheckedOutsBooks(
-      user,
-      lang,
-    );
-    return { data };
+  async getMyCheckedOutsBooks(
+    @Query() query: FilterBorrowingDTO,
+    @User() user: any,
+    @Lang() lang: string,
+  ) {
+    const { data, total, meta } =
+      await this.borrowingService.getMyCheckedOutsBooks(query, user);
+    return { data, total, meta };
   }
 }
