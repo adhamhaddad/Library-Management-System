@@ -9,10 +9,10 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { ScheduleModule } from '@nestjs/schedule';
 import { RedisModule } from './modules/redis/redis.module';
 import { AuthModule } from './modules/auth/auth.module';
-
 import { AdminModule } from './modules/admin/admin.module';
 import { BorrowerModule } from './modules/borrower/borrower.module';
 import { BookModule } from './modules/book/book.module';
+import { BorrowingModule } from './modules/borrowing/borrowing.module';
 
 @Module({
   imports: [
@@ -47,6 +47,7 @@ import { BookModule } from './modules/book/book.module';
     AdminModule,
     BorrowerModule,
     BookModule,
+    BorrowingModule,
   ],
   controllers: [],
   providers: [],
