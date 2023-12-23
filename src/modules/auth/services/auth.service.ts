@@ -60,7 +60,7 @@ export class AuthService {
 
     return {
       data: this.serializeUser(user),
-      message: errorMessage.otpForVerification,
+      message: errorMessage.requestSuccessful,
     };
   }
 

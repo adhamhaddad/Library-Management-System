@@ -27,7 +27,7 @@ export class User implements IUser {
   @Column({ type: 'varchar', length: 255, nullable: false })
   password: string;
 
-  @Column({ type: 'enum', enum: RoleType, default: 'Borrower' })
+  @Column({ type: 'enum', enum: RoleType, default: 'borrower' })
   role: RoleType;
 
   @Column({ type: 'varchar', length: 96, nullable: true })
