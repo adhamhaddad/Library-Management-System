@@ -23,8 +23,8 @@ export class BookSerialization {
   shelfLocation: string;
 
   @Expose({ name: 'created_at' })
-  created_at: Date;
+  createdAt: Date;
 
   @Expose({ name: 'updated_at' })
-  updated_at: Date;
+  updatedAt: Date;
 }

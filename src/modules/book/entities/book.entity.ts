@@ -5,8 +5,10 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Generated,
+  OneToMany,
 } from 'typeorm';
 import { IBook } from '../interfaces/book.interface';
+import { Borrowing } from 'src/modules/borrowing/entities/borrowing.entity';
 
 @Entity({ name: 'books' })
 export class Book implements IBook {
@@ -40,4 +42,7 @@ export class Book implements IBook {
 
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
   updated_at: Date;
+
+  @OneToMany(() => Borrowing, (borrowing) => borrowing.book)
+  borrowings: Borrowing[];
 }

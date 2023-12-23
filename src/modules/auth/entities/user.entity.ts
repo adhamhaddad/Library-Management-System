@@ -5,9 +5,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Generated,
+  OneToMany,
 } from 'typeorm';
 import { IUser } from '../interfaces/user.interface';
 import { RoleType } from 'src/constants/role-type';
+import { Borrowing } from 'src/modules/borrowing/entities/borrowing.entity';
 
 @Entity({ name: 'users' })
 export class User implements IUser {
@@ -38,4 +40,7 @@ export class User implements IUser {
 
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
   updated_at: Date;
+
+  @OneToMany(() => Borrowing, (borrowing) => borrowing.user)
+  borrowings: Borrowing[];
 }

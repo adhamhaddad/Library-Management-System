@@ -14,6 +14,7 @@ import { UpdateBorrowerDto } from '../dto/update-borrower.dto';
 import { FilterBorrowerDTO } from 'src/modules/borrower/dto/filter-borrowers.dto';
 import { plainToClass } from 'class-transformer';
 import { UserSerialization } from 'src/modules/auth/serializers/user.serialization';
+import { RoleType } from 'src/constants';
 
 @Injectable()
 export class BorrowerService {
@@ -31,7 +32,9 @@ export class BorrowerService {
       },
     );
 
-    const selector: Partial<IUser> = {};
+    const selector: Partial<IUser> = {
+      role: RoleType.BORROWER,
+    };
     const keyword = query.filter?.keyword;
     let order: OrderByCondition = {
       created_at: 'DESC',

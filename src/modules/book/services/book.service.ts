@@ -32,7 +32,10 @@ export class BookService {
       },
     );
 
-    const bookCreated = this.bookRepository.create(body);
+    const bookCreated = this.bookRepository.create({
+      ...body,
+      available_quantity: body.quantity,
+    });
     const book = await this.bookRepository.save(bookCreated);
     if (!book)
       throw new HttpException('Failed to create Book', HttpStatus.BAD_REQUEST);

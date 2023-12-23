@@ -22,11 +22,6 @@ export class CreateBookDto {
   @Expose({ name: 'quantity' })
   quantity: number;
 
-  @IsNumber()
-  @IsNotEmpty()
-  @Expose({ name: 'availableQuantity' })
-  available_quantity: number;
-
   @IsString()
   @IsNotEmpty()
   @Expose({ name: 'shelfLocation' })
