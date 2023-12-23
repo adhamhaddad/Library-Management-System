@@ -101,7 +101,14 @@ export class AuthService {
       120,
     );
 
-    const token = await this.jwtService.signAsync({ user });
+    const { id, uuid, name, email, role } = user;
+    const token = await this.jwtService.signAsync({
+      id,
+      uuid,
+      name,
+      email,
+      role,
+    });
 
     return {
       message: errorMessage.loginSuccessfully,

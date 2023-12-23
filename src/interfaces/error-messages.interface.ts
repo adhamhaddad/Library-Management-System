@@ -27,4 +27,5 @@ export interface ErrorMessages {
   failedToReturnBook: string;
   bookAlreadyReturn: string;
   bookAlreadyChecked: string;
+  invalidDueDate: string;
 }
