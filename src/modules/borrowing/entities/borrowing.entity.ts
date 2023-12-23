@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   Generated,
   ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { IBorrowing } from '../interfaces/borrowing.interface';
 import { User } from 'src/modules/auth/entities/user.entity';
@@ -21,9 +22,11 @@ export class Borrowing implements IBorrowing {
   uuid: string;
 
   @ManyToOne(() => User, (user) => user.borrowings)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @ManyToOne(() => Book, (book) => book.borrowings)
+  @JoinColumn({ name: 'book_id' })
   book: Book;
 
   @Column({ type: 'date', nullable: false })
