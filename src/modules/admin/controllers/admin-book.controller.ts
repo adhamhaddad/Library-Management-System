@@ -11,15 +11,15 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AdminGuard } from 'src/modules/admin/guards/admin.guard';
-import { BookService } from '../services/book.service';
-import { CreateBookDto } from '../dto/create-book.dto';
-import { UpdateBookDto } from '../dto/update-book.dto';
+import { BookService } from 'src/modules/book/services/book.service';
+import { CreateBookDto } from 'src/modules/book/dto/create-book.dto';
+import { UpdateBookDto } from 'src/modules/book/dto/update-book.dto';
 import { Lang } from 'src/decorators/lang.decorator';
-import { FilterBookDTO } from '../dto/filter-book.dto';
+import { FilterBookDTO } from 'src/modules/book/dto/filter-book.dto';
 
 @UseGuards(AuthGuard('jwt'), AdminGuard)
 @Controller('admin/books')
-export class BooksController {
+export class AdminBooksController {
   constructor(private readonly bookService: BookService) {}
 
   @Post()
