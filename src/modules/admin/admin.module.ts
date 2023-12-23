@@ -9,15 +9,26 @@ import { JwtStrategy } from '../auth/strategies/jwt.strategy';
 import { jwtFactory } from '../auth/config/jwt.config';
 import { JwtModule } from '@nestjs/jwt';
 import { RedisService } from '../redis/redis.service';
+import { PasswordHash } from 'src/utils/password-hash';
+import { AdminSeeder } from './services/seeder.service';
+import { BooksModule } from './modules/books/books.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([User, AuthModule]),
     JwtModule.registerAsync(jwtFactory),
     RedisModule,
+    BooksModule,
   ],
   exports: [TypeOrmModule.forFeature([AuthModule])],
-  providers: [AuthService, JwtStrategy, Utils, RedisService],
+  providers: [
+    AuthService,
+    AdminSeeder,
+    PasswordHash,
+    JwtStrategy,
+    Utils,
+    RedisService,
+  ],
   controllers: [],
 })
 export class AdminModule {}

@@ -15,9 +15,13 @@ import { AllConfigType } from './config/config.type';
 import { CustomExceptionFilter } from './filters/custom-exception-filter.filter';
 import { ResponseInterceptor } from './utils/interceptor/response.interceptor';
 import { ValidationError } from 'class-validator/types/validation/ValidationError';
+import { AdminSeeder } from './modules/admin/services/seeder.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  const adminSeeder = app.get(AdminSeeder);
+  await adminSeeder.seedAdmin();
 
   const configService = app.get(ConfigService) as ConfigService<AllConfigType>;
 

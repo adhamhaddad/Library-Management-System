@@ -9,6 +9,7 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { ScheduleModule } from '@nestjs/schedule';
 import { RedisModule } from './modules/redis/redis.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { AuthModule } from './modules/auth/auth.module';
     ScheduleModule.forRoot(),
     RedisModule,
     AuthModule,
+    AdminModule,
   ],
   controllers: [],
   providers: [],
