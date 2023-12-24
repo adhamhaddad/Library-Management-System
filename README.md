@@ -54,7 +54,7 @@ $ pnpm run schema:drop
 
 ## API Documentation
 
-[API](./docs/API.md) - Read the APIs documentation.
+[API](./docs/README.md) - Read the APIs documentation.
 
 ## License
 
