@@ -10,3 +10,5 @@ This is the approach that I used in this repository to keep all branches clear.
 
 This is the main database design I used.
 ![Flow](./assets/library-management-system-main.png)
+
+### [Back to README](./README.md#auth)
