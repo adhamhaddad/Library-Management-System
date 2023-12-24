@@ -1,12 +1,8 @@
-# Routes
+# Admin Account Credentials
 
 ## POST /api/v1/auth/login
 
-Login user.
-
-### Important
-
-Read [IMPORTANT.md](../../IMPORTANT.md) file for Admin Account credentials
+Login admin.
 
 ### Request Headers
 
@@ -24,8 +20,8 @@ The request body should be a JSON object with the following properties:
 
 ```json
 {
-  "username": "adhamhaddad.dev@gmail.com",
-  "password": "secret-password"
+  "username": "admin@library.com",
+  "password": "admin@library!"
 }
 ```
 
@@ -38,16 +34,16 @@ If the request is success, the server will respond with a status code of 201 and
   "status": 201,
   "message": "Login successfully!",
   "data": {
-    "id": "60eba2e3-332c-418b-8d78-ca01cf200eb7",
-    "name": "Adham",
-    "email": "adhamhaddad.dev@gmail.com",
-    "role": "borrower",
-    "createdAt": "2023-12-23T16:33:33.528Z",
-    "updatedAt": "2023-12-23T16:33:33.528Z"
+    "id": "8dc50f2a-3fac-4f3d-8983-dec2ced978be",
+    "name": "Library Admin",
+    "email": "admin@library.com",
+    "role": "admin",
+    "createdAt": "2023-12-23T16:33:09.577Z",
+    "updatedAt": "2023-12-23T16:33:09.577Z"
   },
   "total": 0,
   "meta": {}
 }
 ```
 
-### [Back to README](../../README.md#auth)
+### [Back to README](./README.md#auth)

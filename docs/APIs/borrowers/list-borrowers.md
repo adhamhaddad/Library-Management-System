@@ -15,6 +15,25 @@ The request headers should have the following properties:
 }
 ```
 
+### Request Query Params
+
+1. `sort`=string - (`optional`)
+2. `filter[keyword]`=string - (`optional`)
+3. `page`=number - (`optional`)
+
+### Filter Example
+
+`http://localhost:3000/api/v1/books?filter[keyword]=Adham` - Borrower name
+`http://localhost:3000/api/v1/books?filter[keyword]=adhamhaddad.dev@gmail.com` - Borrower email
+
+### Sort Example
+
+`name, email`
+
+`http://localhost:3000/api/v1/books?sort=-name`- Borrower name desc
+
+`http://localhost:3000/api/v1/books?sort=name` - Borrower name asc
+
 ### Response
 
 If the request is success, the server will respond with a status code of 200 and a JSON array of borrowers:
