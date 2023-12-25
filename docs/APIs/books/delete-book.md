@@ -15,6 +15,10 @@ The request headers should have the following properties:
 }
 ```
 
+### Request Params
+
+1. `id` Book ID - (`required`)
+
 ### Response
 
 If the request is success, the server will respond with a status code of 200 and a JSON of books:
