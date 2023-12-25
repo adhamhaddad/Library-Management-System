@@ -15,6 +15,10 @@ The request headers should have the following properties:
 }
 ```
 
+### Request Params
+
+1. `id` Borrowing Record ID - (`required`)
+
 ### Response
 
 If the request is success, the server will respond with a status code of 201 and a JSON of book return:

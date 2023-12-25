@@ -1,20 +1,23 @@
 # Library-Management-System-API
 
-Note:
-All APIs supports (en, ar) filter
+## Note:
 
-## Request Query Params
-
-`lang`=string - (`optional`)
+All APIs supports (en, ar) lang
 
 ## Example
 
-`http://localhost:3000/api/v1/books?lang=en`
+The request headers should have the following properties:
+
+```json
+"headers": {
+    "localization": "en"
+}
+```
 
 ## APIs
 
 - [Library-Management-System-API](#library-management-system-api)
-  - [Request Query Params](#request-query-params)
+  - [Note:](#note)
   - [Example](#example)
   - [APIs](#apis)
   - [Auth](#auth)

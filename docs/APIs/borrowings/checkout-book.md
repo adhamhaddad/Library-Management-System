@@ -15,6 +15,10 @@ The request headers should have the following properties:
 }
 ```
 
+### Request Params
+
+1. `id` Book ID - (`required`)
+
 ### Request Body
 
 The request body should be a JSON object with the following properties:
